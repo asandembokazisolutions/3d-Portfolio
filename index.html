@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asande Portfolio</title>
+    <link rel="icon" type="image/png" href="Images/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <aside>
+            <ul class="Links">
+                <li onclick="Navigate(0)" class="activeLink"><i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </li>
+
+                <li onclick="Navigate(1)"><i class="fa-solid fa-user"></i>
+                    <p>About Me</p>
+                </li>
+
+                <li onclick="Navigate(2)"><i class="fa-solid fa-list"></i>
+                    <p>Services</p>
+                </li>
+                
+                <li onclick="Navigate(3)"><i class="fa-solid fa-comments"></i>
+                    <p>Contact Me</p>
+                </li>
+                <li onclick="Navigate(4)"><i class="fa-solid fa-diagram-project"></i>
+                    <p>Projects</p>
+                </li>
+                <li onclick="Navigate(5)"><i class="fa-solid fa-award"></i>
+                    <p>Certificates</p>
+                </li>
+            </ul>
+        </aside>
+        <div class="swiper mySwiper">
+            <div class="SlideContainer swiper-wrapper">
+                <div class="swiper-slide home-slide">
+                    <div class="HomeContent">
+                        <h1>Hi! I'm <span class="stylized-name">Asande Mbokazi</span>,</h1>
+                        <h2><span class="professions">A second-year student @ UFS</span></h2>
+                        <p class="heroline">As a second-year IT student with a passion for innovation and technology, 
+                            I'm driven to explore the vast possibilities in web development, software development, 
+                            and cybersecurity. With a solid foundation in programming fundamentals and a keen interest in staying ahead of the curve,
+                             I'm excited to dive deeper into the world of coding, design, and security. I'm eager to apply my skills and knowledge to real-world projects, 
+                             collaborate with like-minded individuals, and continuously learn and grow in this ever-evolving field.</p>
+                        <div class="buttonGroup">
+                            <button id="homeContactBtn" class="btn-solid">Contact Me</button>
+                        </div>
+                    </div>
+                    <div class="SlideImg">
+                        <div class="corner-tr"></div>
+                        <img src="Images/logo.jpg" alt="hero image">
+                        <div class="corner-bl"></div>
+                    </div>
+                    <p class="slide-help">
+                        Scroll for next slide <i class="fa-solid fa-chevron-right fa-shake"></i>
+                    </p>
+                </div>
+                <div class="swiper-slide">
+                    <div class="about-us">
+                        <h1 class="heading">About Me</h1>
+            <h3 class="sub-heading">I'm Asande Mbokazi, <span class="professions">A Web Developer, Cybersecurity Specialist</span></h3>
+                        <p class="aboutme-details">
+                            I'm a motivated web developer and cybersecurity learner with a practical focus on building
+                            accessible, maintainable web applications. I write clear HTML, modern CSS and JavaScript,
+                            collaborate well with designers and backend engineers, and follow best practices for
+                            performance and security. I approach projects with curiosity and a growth mindset—ready to
+                            contribute to production work, learn on the job, and help teams ship high-quality software.
+                        </p>
+                        <div class="about-me-division">
+                            <div class="about-me-table">
+                                <li><span>Experience:</span> N/A </li>
+                                <li><span>Country:</span> South Africa</li>
+                                <li><span>Availability:</span> 24/7</li>
+                                <li><span>Age:</span> 21</li>
+                                <li><span>Phone:</span> +27714981612</li>
+                                <li><span>Language Used:</span> HTML, CSS, JS</li>
+                                <li><span>Degree:</span> Currently persuing it...</li>
+                                <div class="buttonGroup">
+                                    <button id="aboutContactBtn">Contact Me</button>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <li>
+                                    <p>HTML</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 80%;">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>CSS</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 70%;">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>JavaScript</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 50%;">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>C#</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 90%;">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Java</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 75%;">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>MySQL</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 60%;">
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide services">
+                    <h1 class="heading">Services</h1>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fa-solid fa-pen-ruler"></i>
+                            <h2>Web Development</h2>
+                            <p>I build responsive, accessible web applications using modern HTML, CSS and JavaScript. From small interactive widgets to full single-page apps, I focus on clean code, performance and maintainability.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fa-solid fa-globe"></i>
+                            <h2>Web Design</h2>
+                            <p>I design user-centered interfaces with attention to typography, color and layout. I deliver responsive mockups and pixel-perfect front-end implementations that communicate your brand and engage users.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <h2>Software Development</h2>
+                            <p>I develop cross-platform software and tooling with a pragmatic approach to architecture and testing. I write modular, maintainable code in C# and JavaScript and ship features with disciplined version control.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h2>Penetration Testing (Studying)</h2>
+                            <p>I'm currently studying penetration testing and ethical hacking. I practice vulnerability discovery, basic network and web app testing (OWASP principles), and responsible disclosure workflows to improve overall security.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="swiper-slide contactMe">
+                    <div class="contact-layout">
+                        <div class="contact-left">
+                            <h1 class="contact-title">Contact Me</h1>
+
+                            <div class="contact-item">
+                                <i class="fa-solid fa-phone contact-icon"></i>
+                                <div class="contact-item-text">
+                                    <h4>Mobile No</h4>
+                                    <p>+27-714-981-612</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fa-solid fa-location-dot contact-icon"></i>
+                                <div class="contact-item-text">
+                                    <h4>Location</h4>
+                                    <p>Mpumalanga, Ermelo</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fa-solid fa-envelope contact-icon"></i>
+                                <div class="contact-item-text">
+                                    <h4>Email</h4>
+                                    <p>Asandeseaphesihle@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <i class="fa-brands fa-github contact-icon"></i>
+                                <div class="contact-item-text">
+                                    <h4>GitHub</h4>
+                                    <p>https://github.com/asandembokazisolutions</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-right">
+                                <div class="form-header">
+                                    <div class="social-icons">
+                                        <span class="si">
+                                            <a href="https://github.com/asandembokazisolutions" target="_blank" rel="noopener" aria-label="GitHub">
+                                                <i class="fa-brands fa-github"></i>
+                                                <span class="si-label">GitHub</span>
+                                            </a>
+                                        </span>
+                                        <span class="si">
+                                            <a href="https://www.instagram.com/asande550" target="_blank" rel="noopener" aria-label="Instagram">
+                                                <i class="fa-brands fa-instagram"></i>
+                                                <span class="si-label">Instagram</span>
+                                            </a>
+                                        </span>
+                                        <span class="si">
+                                            <a href="https://wa.me/27714981612" target="_blank" rel="noopener" aria-label="WhatsApp">
+                                                <i class="fa-brands fa-whatsapp"></i>
+                                                <span class="si-label">WhatsApp</span>
+                                            </a>
+                                        </span>
+                                        <span class="si">
+                                            <a href="https://www.facebook.com/asande.mbokazi.2025" target="_blank" rel="noopener" aria-label="Facebook">
+                                                <i class="fa-brands fa-facebook"></i>
+                                                <span class="si-label">Facebook</span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="contact-actions">
+                                    <a id="downloadCVLink" href="assets/CV_AS_MBOKAZI.pdf" download class="download-card">
+                                        <div class="download-icon"><i class="fa-solid fa-file-lines"></i></div>
+                                        <div class="download-meta">
+                                            <div class="download-title">Download CV</div>
+                                            <div class="download-sub">Plain text · 1 page</div>
+                                        </div>
+                                        <div class="download-arrow"><i class="fa-solid fa-arrow-down-to-line"></i></div>
+                                    </a>
+                                    <a id="mailtoLink" href="mailto:Asandeseaphesihle@gmail.com?subject=Portfolio%20Inquiry" class="contact-email btn-send">Email Me</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide projects">
+                    <h1 class="heading">Projects</h1>
+                    <div class="projects-list">
+                        <div class="project-card">
+                            <h2>1. Calculator</h2>
+                            <p>Simple calculator app — basic operations and history.</p>
+                            <a href="https://github.com/asandembokazisolutions/Calculator" class="project-link">View</a>
+                        </div>
+                        <div class="project-card">
+                            <h2>2. BrainlybunchProfile</h2>
+                            <p>User profile demo for BrainlyBunch — profile card and activity feed.</p>
+                            <a href="https://asandembokazisolutions.github.io/BrainlyBunch-Profile/" class="project-link">View</a>
+                        </div>
+                        <div class="project-card">
+                            <h2>3. BrainlyBunchweb</h2>
+                            <p>Website front-end for BrainlyBunch — responsive landing and docs.</p>
+                            <a href="https://asandembokazisolutions.github.io/BrainlyBunchWeb/" class="project-link">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide certificates">
+                    <h1 class="heading">Certificates</h1>
+                    <p class="aboutme-details">Below are certifications and training I've completed (or am completing). They represent hands-on learning and formal coursework across front-end development, responsive design, and full-stack practices. Click "Verify" to view the original certificate.</p>
+                    <div class="projects-list certificates-list">
+                        <div class="project-card">
+                            <h2>Full Stack Development</h2>
+                            <p>FNB - Full Stack Track · 2025 — Comprehensive program covering front-end, back-end, and deployment workflows. Includes a capstone application demonstrating API integration and responsive UI.</p>
+                            <a href="assets/FNB-App.pdf" class="project-link">Verify</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
