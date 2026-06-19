@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asande Mbokazi — Developer & ML Intern</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,61 +25,105 @@
   --sub:#3d4f6e;
   --font:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
+  --nav-h:68px;
+  --bottomnav-h:64px;
 }
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
-/* ── SIDEBAR ── */
-aside{
-  position:fixed;left:0;top:0;height:100%;width:72px;
-  background:var(--surface);border-right:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;z-index:100;
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+.accent{color:var(--accent)}
+.accent-text{color:var(--accent)}
+.green-text{color:var(--green)}
+.amber-text{color:var(--amber)}
+.muted-text{color:var(--muted)}
+.sub-text{color:var(--sub)}
+ 
+/* ════════ TOP NAVBAR (desktop) ════════ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);
+  background:rgba(6,9,16,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
-.nav-item{
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  padding:12px 0;width:100%;cursor:pointer;
-  color:var(--muted);transition:color .2s;position:relative;
-  font-size:9px;letter-spacing:.05em;text-transform:uppercase;
+.topnav-inner{
+  max-width:1280px;margin:0 auto;height:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;
 }
-.nav-item i{font-size:1.2rem;transition:color .2s}
-.nav-item:hover,
-.nav-item.active{color:var(--accent)}
-.nav-item.active::before{
-  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
-  height:32px;width:3px;background:var(--accent);border-radius:0 2px 2px 0;
+.brand{font-family:var(--mono);font-weight:700;font-size:1.2rem;color:var(--text);text-decoration:none}
+.nav-links{
+  display:flex;align-items:center;gap:4px;list-style:none;
 }
-/* ── LIVE BADGE ── */
-.live-dot{
-  display:flex;align-items:center;gap:6px;
-  font-size:10px;font-family:var(--mono);color:var(--green);
-  padding:4px 10px;border:1px solid var(--green-dim);border-radius:20px;
-  letter-spacing:.08em;
+.nav-link{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 16px;border-radius:8px;
+  color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;
+  transition:color .2s,background .2s;
 }
-.live-dot::before{
-  content:'';width:6px;height:6px;background:var(--green);border-radius:50%;
-  animation:pulse 1.8s ease-in-out infinite;
+.nav-link i{font-size:.85rem}
+.nav-link:hover{color:var(--text);background:var(--card)}
+.nav-link.active{color:var(--accent);background:var(--accent-dim)}
+.nav-cta{
+  padding:9px 20px;background:var(--accent);color:#fff;border-radius:7px;
+  font-size:.85rem;font-weight:600;text-decoration:none;transition:opacity .2s;
 }
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
-/* ── SWIPER ── */
-.swiper{margin-left:72px;width:calc(100vw - 72px);height:100vh;overflow:hidden}
-.swiper-slide{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;background:var(--bg)}
-/* ── HERO ── */
+.nav-cta:hover{opacity:.85}
+ 
+/* ════════ BOTTOM TAB BAR (mobile only, hidden on desktop) ════════ */
+.bottomnav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  height:var(--bottomnav-h);
+  background:rgba(6,9,16,.92);
+  backdrop-filter:blur(14px);
+  border-top:1px solid var(--border);
+  align-items:center;justify-content:space-around;
+}
+.bn-link{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--muted);text-decoration:none;font-size:9.5px;font-weight:500;
+  letter-spacing:.02em;flex:1;padding:6px 0;
+  transition:color .2s;
+}
+.bn-link i{font-size:1.05rem}
+.bn-link.active{color:var(--accent)}
+ 
+/* ════════ LAYOUT ════════ */
+main{padding-top:var(--nav-h)}
+.section{
+  min-height:100vh;
+  padding:80px 8%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 .hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:80px 8% 80px 10%;gap:80px;position:relative;overflow:hidden;
+  min-height:calc(100vh - var(--nav-h));
+  position:relative;overflow:hidden;
 }
-.hero::before{
-  content:'';position:absolute;top:-200px;right:-200px;
+.hero-bg-glow{
+  position:absolute;top:-200px;right:-200px;
   width:700px;height:700px;border-radius:50%;
   background:radial-gradient(circle,rgba(79,142,247,.07) 0%,transparent 70%);
   pointer-events:none;
 }
-.hero-left{flex:1;min-width:0}
+.hero-inner{
+  display:flex;align-items:center;gap:80px;
+  position:relative;z-index:1;
+  flex-wrap:wrap;
+}
+.hero-left{flex:1;min-width:320px}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   font-size:11px;font-family:var(--mono);color:var(--muted);
   border:1px solid var(--border);padding:6px 14px;border-radius:4px;
   margin-bottom:28px;letter-spacing:.1em;
 }
+.dot-live{
+  width:6px;height:6px;background:var(--green);border-radius:50%;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 .hero h1{
   font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.05;
   margin-bottom:8px;letter-spacing:-.02em;
@@ -90,21 +132,16 @@ aside{
   background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero-role{
-  font-size:1.1rem;color:var(--muted);font-weight:400;margin-bottom:20px;
-}
-.hero-role span{color:var(--accent);font-weight:500}
-.hero-bio{
-  font-size:.95rem;line-height:1.8;color:var(--muted);max-width:520px;
-  margin-bottom:36px;
-}
+.hero-role{font-size:1.1rem;color:var(--muted);font-weight:400;margin-bottom:20px}
+.hero-bio{font-size:.95rem;line-height:1.8;color:var(--muted);max-width:520px;margin-bottom:36px}
 .btn-group{display:flex;gap:12px;flex-wrap:wrap}
 .btn-primary{
   padding:12px 28px;background:var(--accent);color:#fff;border:none;
   border-radius:6px;font-size:.9rem;font-weight:600;cursor:pointer;
-  font-family:var(--font);transition:opacity .2s;
+  font-family:var(--font);transition:opacity .2s;text-decoration:none;display:inline-block;
 }
 .btn-primary:hover{opacity:.85}
+.btn-primary.full-width{width:100%;text-align:center;margin-top:20px;padding:13px}
 .btn-outline{
   padding:12px 28px;background:transparent;color:var(--text);
   border:1px solid var(--border);border-radius:6px;font-size:.9rem;
@@ -112,23 +149,17 @@ aside{
   transition:border-color .2s,color .2s;text-decoration:none;display:inline-block;
 }
 .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
-/* Stats row */
+ 
 .stats-row{
   display:flex;gap:32px;margin-top:40px;padding-top:40px;
   border-top:1px solid var(--border);flex-wrap:wrap;
 }
-.stat-item .stat-num{
-  font-size:1.6rem;font-weight:800;font-family:var(--mono);color:var(--text);
-}
+.stat-item .stat-num{font-size:1.6rem;font-weight:800;font-family:var(--mono);color:var(--text)}
 .stat-item .stat-num span{color:var(--accent)}
 .stat-item .stat-label{font-size:.75rem;color:var(--muted);margin-top:2px;letter-spacing:.05em}
-/* Right hero panel */
-.hero-right{
-  width:340px;flex-shrink:0;display:flex;flex-direction:column;gap:14px;
-}
-.info-card{
-  background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;
-}
+ 
+.hero-right{width:340px;flex-shrink:0;display:flex;flex-direction:column;gap:14px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
 .info-card-label{font-size:10px;color:var(--sub);letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);margin-bottom:10px}
 .info-card-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:.85rem}
 .info-card-row:last-child{border-bottom:none;padding-bottom:0}
@@ -138,46 +169,50 @@ aside{
   background:linear-gradient(135deg,var(--card) 0%,rgba(79,142,247,.05) 100%);
   border:1px solid var(--accent-dim);border-radius:10px;padding:18px 20px;
 }
-.internship-card .co-label{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:6px}
-.internship-card .co-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px}
-.internship-card .co-role{font-size:.82rem;color:var(--muted)}
-.scroll-hint{
-  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-  font-size:.75rem;color:var(--sub);display:flex;flex-direction:column;align-items:center;gap:6px;
+.live-dot{
+  display:flex;align-items:center;gap:6px;width:fit-content;
+  font-size:10px;font-family:var(--mono);color:var(--green);
+  padding:4px 10px;border:1px solid var(--green-dim);border-radius:20px;
+  letter-spacing:.08em;margin-bottom:14px;
 }
-.scroll-hint i{animation:bounce 2s ease-in-out infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-/* ── ABOUT ── */
-.about-slide{padding:80px 10%;min-height:100vh}
+.live-dot::before{
+  content:'';width:6px;height:6px;background:var(--green);border-radius:50%;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+.co-label{font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:6px}
+.co-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.co-role{font-size:.82rem;color:var(--muted)}
+ 
+/* ════════ SECTION HEADERS ════════ */
 .section-title{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.section-title .accent{color:var(--accent)}
 .section-eyebrow{font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;font-family:var(--mono);margin-bottom:12px}
 .section-sub{color:var(--muted);font-size:.95rem;line-height:1.7;max-width:600px;margin-bottom:48px}
+ 
+/* ════════ ABOUT ════════ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .about-details{display:flex;flex-direction:column;gap:0}
-.detail-row{
-  display:flex;justify-content:space-between;padding:14px 0;
-  border-bottom:1px solid var(--border);font-size:.88rem;
-}
+.detail-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);font-size:.88rem}
 .detail-row:last-child{border-bottom:none}
 .detail-row .dk{color:var(--muted)}
 .detail-row .dv{color:var(--text);font-weight:500;text-align:right}
-/* Skills */
 .skill-section{display:flex;flex-direction:column;gap:14px}
 .skill-item{display:flex;flex-direction:column;gap:8px}
 .skill-top{display:flex;justify-content:space-between;font-size:.83rem;margin-bottom:6px}
 .skill-top span:first-child{color:var(--text);font-weight:500}
 .skill-top span:last-child{color:var(--accent);font-family:var(--mono)}
 .bar-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
-.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent-dim),var(--accent));border-radius:3px;transition:width 1s ease}
-/* ── SERVICES ── */
-.services-slide{padding:80px 10%;min-height:100vh}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:0}
+.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent-dim),var(--accent));border-radius:3px;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.bar-fill.amber-fill{background:linear-gradient(90deg,#3d2a00,var(--amber))}
+.bar-fill.filled{width:var(--target)}
+ 
+/* ════════ SERVICES ════════ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .svc-card{
   background:var(--card);border:1px solid var(--border);border-radius:12px;
   padding:28px 24px;transition:border-color .25s,transform .25s;cursor:default;
 }
 .svc-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.svc-card.highlight{border-color:var(--accent-dim)}
 .svc-icon{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .svc-card h3{font-size:1rem;font-weight:700;margin-bottom:10px}
 .svc-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
@@ -186,8 +221,45 @@ aside{
   color:var(--accent);background:var(--accent-dim);padding:3px 10px;
   border-radius:20px;letter-spacing:.08em;
 }
-/* ── CONTACT ── */
-.contact-slide{padding:80px 10%;min-height:100vh}
+.svc-badge.amber-badge{color:var(--amber);background:rgba(245,158,11,.12)}
+ 
+/* ════════ PROJECTS ════════ */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:24px;transition:border-color .25s,transform .25s;
+  display:flex;flex-direction:column;gap:12px;
+}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.proj-card.dashed{border-color:var(--accent-dim);border-style:dashed}
+.proj-num{font-size:.72rem;color:var(--sub);font-family:var(--mono);letter-spacing:.1em}
+.proj-card h3{font-size:1rem;font-weight:700;color:var(--text)}
+.proj-card p{font-size:.85rem;color:var(--muted);line-height:1.65;flex:1}
+.proj-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:500}
+.proj-link:hover{text-decoration:underline}
+.proj-link i{font-size:.75rem}
+.active-dev{font-size:.8rem;color:var(--amber);font-family:var(--mono)}
+ 
+/* ════════ CERTS ════════ */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.cert-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:24px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .25s;
+}
+.cert-card:hover{border-color:var(--accent)}
+.cert-issuer{font-size:.72rem;color:var(--accent);font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.cert-card h3{font-size:.95rem;font-weight:700;color:var(--text)}
+.cert-date{font-size:.78rem;color:var(--sub);font-family:var(--mono)}
+.cert-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
+.cert-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.skill-pill{font-size:.72rem;font-family:var(--mono);padding:3px 10px;background:var(--surface);border:1px solid var(--border);border-radius:20px;color:var(--muted)}
+.cert-verify{display:inline-flex;align-items:center;gap:6px;margin-top:auto;font-size:.82rem;color:var(--accent);font-weight:600;text-decoration:none}
+.cert-verify:hover{text-decoration:underline}
+.cert-verify i{font-size:.75rem}
+.cert-id{font-size:.7rem;color:var(--sub);font-family:var(--mono);margin-top:-6px}
+ 
+/* ════════ CONTACT ════════ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .contact-items{display:flex;flex-direction:column;gap:20px;margin-top:4px}
 .ci{display:flex;align-items:center;gap:16px}
@@ -207,10 +279,7 @@ aside{
 }
 .soc-btn:hover{color:var(--accent);border-color:var(--accent)}
 .soc-btn i{font-size:1rem}
-.dl-card{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:24px;margin-top:auto;
-}
+.dl-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
 .dl-card h3{font-size:.9rem;color:var(--muted);margin-bottom:20px;font-weight:400}
 .dl-link{
   display:flex;align-items:center;gap:14px;padding:14px;
@@ -219,500 +288,494 @@ aside{
   transition:border-color .2s;margin-bottom:10px;
 }
 .dl-link:hover{border-color:var(--accent)}
-.dl-link:last-child{margin-bottom:0}
-.dl-link i{color:var(--accent);font-size:1.2rem;flex-shrink:0}
+.dl-link:last-of-type{margin-bottom:0}
+.dl-link i:first-child{color:var(--accent);font-size:1.2rem;flex-shrink:0}
 .dl-info{flex:1}
 .dl-name{font-weight:600;font-size:.88rem}
 .dl-meta{font-size:.76rem;color:var(--muted);margin-top:2px}
 .dl-link .fa-arrow-down{margin-left:auto;color:var(--sub);font-size:.9rem}
-/* ── PROJECTS ── */
-.projects-slide{padding:80px 10%;min-height:100vh}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.proj-card{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:24px;transition:border-color .25s,transform .25s;
-  display:flex;flex-direction:column;gap:12px;
-}
-.proj-card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.proj-num{font-size:.72rem;color:var(--sub);font-family:var(--mono);letter-spacing:.1em}
-.proj-card h3{font-size:1rem;font-weight:700;color:var(--text)}
-.proj-card p{font-size:.85rem;color:var(--muted);line-height:1.65;flex:1}
-.proj-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:500;
-}
-.proj-link:hover{text-decoration:underline}
-/* ── CERTS ── */
-.certs-slide{padding:80px 10%;min-height:100vh}
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.cert-card{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:24px;display:flex;flex-direction:column;gap:14px;
-  transition:border-color .25s;
-}
-.cert-card:hover{border-color:var(--accent)}
-.cert-issuer{
-  font-size:.72rem;color:var(--accent);font-family:var(--mono);
-  letter-spacing:.1em;text-transform:uppercase;
-}
-.cert-card h3{font-size:.95rem;font-weight:700;color:var(--text)}
-.cert-date{font-size:.78rem;color:var(--sub);font-family:var(--mono)}
-.cert-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.skill-pill{
-  font-size:.72rem;font-family:var(--mono);padding:3px 10px;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;color:var(--muted);
-}
-.cert-verify{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:auto;font-size:.82rem;color:var(--accent);font-weight:600;
-  text-decoration:none;
-}
-.cert-verify:hover{text-decoration:underline}
-.cert-id{font-size:.7rem;color:var(--sub);font-family:var(--mono);margin-top:-6px}
  
-/* ── MOBILE ── */
-@media(max-width:900px){
-  aside{width:56px}
-  .swiper{margin-left:56px;width:calc(100vw - 56px)}
-  .hero{flex-direction:column;padding:60px 6% 80px;gap:40px}
+/* ════════ FOOTER ════════ */
+.footer{border-top:1px solid var(--border);padding:28px 8%}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--mono);font-weight:700;font-size:1.05rem}
+.footer-copy{font-size:.8rem;color:var(--sub)}
+ 
+/* ════════ SCROLL REVEAL ════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+ 
+/* ════════ RESPONSIVE ════════ */
+@media(max-width:1024px){
+  .hero-inner{gap:48px}
   .hero-right{width:100%}
   .about-grid,.contact-grid{grid-template-columns:1fr}
+}
+ 
+@media(max-width:900px){
+  /* hide desktop center nav links, keep brand + CTA so bar still reads as a navbar */
+  .nav-links{display:none}
+  .topnav-inner{justify-content:space-between}
   .stats-row{gap:20px}
-  .nav-item span{display:none}
-  .nav-item{font-size:0}
+ 
+  /* show mobile bottom tab bar */
+  .bottomnav{display:flex}
+  main{padding-bottom:var(--bottomnav-h)}
 }
+ 
 @media(max-width:600px){
+  .section{padding:60px 6%}
   .hero h1{font-size:2rem}
-  .hero-right{display:none}
-  aside{width:0;overflow:hidden}
-  .swiper{margin-left:0;width:100vw}
+  .nav-cta{display:none}
+  .topnav-inner{padding:0 20px}
 }
+ 
 </style>
 </head>
 <body>
  
-<!-- SIDEBAR -->
-<aside>
-  <div class="nav-item active" onclick="goTo(0)" title="Home">
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
-  </div>
-  <div class="nav-item" onclick="goTo(1)" title="About">
-    <i class="fa-solid fa-user"></i>
-    <span>About</span>
-  </div>
-  <div class="nav-item" onclick="goTo(2)" title="Services">
-    <i class="fa-solid fa-list-check"></i>
-    <span>Services</span>
-  </div>
-  <div class="nav-item" onclick="goTo(3)" title="Contact">
-    <i class="fa-solid fa-paper-plane"></i>
-    <span>Contact</span>
-  </div>
-  <div class="nav-item" onclick="goTo(4)" title="Projects">
-    <i class="fa-solid fa-diagram-project"></i>
-    <span>Projects</span>
-  </div>
-  <div class="nav-item" onclick="goTo(5)" title="Certificates">
-    <i class="fa-solid fa-award"></i>
-    <span>Certs</span>
-  </div>
-</aside>
+<!-- TOP NAVBAR (always visible, all screen sizes) -->
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a href="#home" class="brand">AM<span class="accent">.</span></a>
  
-<!-- SWIPER -->
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active" data-section="home"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+      <li><a href="#about" class="nav-link" data-section="about"><i class="fa-solid fa-user"></i><span>About</span></a></li>
+      <li><a href="#services" class="nav-link" data-section="services"><i class="fa-solid fa-list-check"></i><span>Services</span></a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></a></li>
+      <li><a href="#certs" class="nav-link" data-section="certs"><i class="fa-solid fa-award"></i><span>Certs</span></a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact"><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a></li>
+    </ul>
  
-    <!-- 0. HOME -->
-    <div class="swiper-slide">
-      <div class="hero">
-        <div class="hero-left">
-          <div class="hero-tag">
-            <span style="color:var(--green);font-size:.8rem">●</span>
-            Available for opportunities
-          </div>
-          <h1>Hi, I'm<br><span class="name">Asande Mbokazi</span></h1>
-          <p class="hero-role">
-            Full-Stack Developer &amp; <span>ML Intern @ FlyRank AI</span>
-          </p>
-          <p class="hero-bio">
-            Final-year IT student at UFS, currently interning in Machine Learning at FlyRank AI.
-            I build production-ready web apps, write clean systems code, and obsess over the craft of software.
-            Hungry to contribute, relentless about growth.
-          </p>
-          <div class="btn-group">
-            <button class="btn-primary" onclick="goTo(3)">Get in Touch</button>
-            <a href="assets/cv_pdf_as.pdf" download class="btn-outline">Download CV</a>
-          </div>
-          <div class="stats-row">
-            <div class="stat-item">
-              <div class="stat-num">3<span>+</span></div>
-              <div class="stat-label">Live Projects</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">3<span>+</span></div>
-              <div class="stat-label">Certifications</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">21</div>
-              <div class="stat-label">Years Old</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num" style="color:var(--green)">ML</div>
-              <div class="stat-label">Active Intern</div>
-            </div>
-          </div>
+    <a href="assets/cv_pdf_as.pdf" download class="nav-cta">Download CV</a>
+  </div>
+</nav>
+ 
+<!-- BOTTOM TAB BAR (mobile only) -->
+<nav class="bottomnav" id="bottomnav">
+  <a href="#home" class="bn-link active" data-section="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <a href="#about" class="bn-link" data-section="about"><i class="fa-solid fa-user"></i><span>About</span></a>
+  <a href="#services" class="bn-link" data-section="services"><i class="fa-solid fa-list-check"></i><span>Work</span></a>
+  <a href="#projects" class="bn-link" data-section="projects"><i class="fa-solid fa-diagram-project"></i><span>Projects</span></a>
+  <a href="#certs" class="bn-link" data-section="certs"><i class="fa-solid fa-award"></i><span>Certs</span></a>
+  <a href="#contact" class="bn-link" data-section="contact"><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+</nav>
+ 
+<main>
+ 
+  <!-- HOME -->
+  <section id="home" class="section hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="dot-live"></span>
+          Available for opportunities
         </div>
-        <div class="hero-right">
-          <div class="internship-card">
-            <div class="live-dot" style="margin-bottom:14px">CURRENTLY INTERNING</div>
-            <div class="co-label">Company</div>
-            <div class="co-name">FlyRank AI</div>
-            <div class="co-role">Machine Learning Intern — building intelligent systems</div>
-          </div>
-          <div class="info-card">
-            <div class="info-card-label">Quick Profile</div>
-            <div class="info-card-row"><span>University</span><span>UFS — Final Year</span></div>
-            <div class="info-card-row"><span>Degree</span><span>BSc IT (In Progress)</span></div>
-            <div class="info-card-row"><span>Location</span><span>South Africa</span></div>
-            <div class="info-card-row"><span>Availability</span><span style="color:var(--green)">Open to Offers</span></div>
-            <div class="info-card-row"><span>Phone</span><span>+27 71 498 1612</span></div>
-          </div>
-          <div class="info-card">
-            <div class="info-card-label">Primary Stack</div>
-            <div class="info-card-row"><span>Languages</span><span>C#, Java, Python, JS</span></div>
-            <div class="info-card-row"><span>Frontend</span><span>HTML · CSS · JS</span></div>
-            <div class="info-card-row"><span>Database</span><span>MySQL</span></div>
-            <div class="info-card-row"><span>ML / AI</span><span style="color:var(--amber)">In Progress ↗</span></div>
-          </div>
-        </div>
-        <p class="scroll-hint">Scroll to explore <i class="fa-solid fa-chevron-right"></i></p>
-      </div>
-    </div>
- 
-    <!-- 1. ABOUT -->
-    <div class="swiper-slide">
-      <div class="about-slide">
-        <div class="section-eyebrow">Who I Am</div>
-        <h2 class="section-title">About <span class="accent">Me</span></h2>
-        <p class="section-sub">
-          A motivated developer with a growth mindset and zero tolerance for mediocrity.
-          I write clean, maintainable code across the full stack and I'm currently expanding into
-          Machine Learning through a live internship — not just studying it, doing it.
+        <h1>Hi, I'm<br><span class="name">Asande Mbokazi</span></h1>
+        <p class="hero-role">
+          Full-Stack Developer &amp; <span class="accent">ML Intern @ FlyRank AI</span>
         </p>
-        <div class="about-grid">
-          <div class="about-details">
-            <div class="detail-row"><span class="dk">Name</span><span class="dv">Asande Siphesihle Mbokazi</span></div>
-            <div class="detail-row"><span class="dk">Age</span><span class="dv">21</span></div>
-            <div class="detail-row"><span class="dk">Location</span><span class="dv">South Africa — Ermelo, Mpumalanga</span></div>
-            <div class="detail-row"><span class="dk">University</span><span class="dv">University of the Free State (UFS)</span></div>
-            <div class="detail-row"><span class="dk">Status</span><span class="dv" style="color:var(--green)">Final-Year Student</span></div>
-            <div class="detail-row"><span class="dk">Internship</span><span class="dv" style="color:var(--accent)">FlyRank AI — ML Intern</span></div>
-            <div class="detail-row"><span class="dk">Email</span><span class="dv">Asandeseaphesihle@gmail.com</span></div>
-            <div class="detail-row"><span class="dk">GitHub</span><span class="dv">asandembokazisolutions</span></div>
-            <div class="detail-row"><span class="dk">Languages</span><span class="dv">English · Zulu</span></div>
-            <div class="detail-row"><span class="dk">Availability</span><span class="dv" style="color:var(--green)">24/7</span></div>
+        <p class="hero-bio">
+          Final-year IT student at UFS, currently interning in Machine Learning at FlyRank AI.
+          I build production-ready web apps, write clean systems code, and obsess over the craft of software.
+          Hungry to contribute, relentless about growth.
+        </p>
+        <div class="btn-group">
+          <a href="#contact" class="btn-primary">Get in Touch</a>
+          <a href="assets/cv_pdf_as.pdf" download class="btn-outline">Download CV</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num">6<span>+</span></div>
+            <div class="stat-label">Live Projects</div>
           </div>
-          <div class="skill-section">
-            <div class="skill-item">
-              <div class="skill-top"><span>C#</span><span>80%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>HTML &amp; CSS</span><span>72%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>Java</span><span>75%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>JavaScript</span><span>60%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>MySQL</span><span>60%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>Python</span><span>45%</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-top"><span>Machine Learning</span><span style="color:var(--amber)">Learning →</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:30%;background:linear-gradient(90deg,#3d2a00,var(--amber))"></div></div>
-            </div>
+          <div class="stat-item">
+            <div class="stat-num">3<span>+</span></div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">21</div>
+            <div class="stat-label">Years Old</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num accent-text">ML</div>
+            <div class="stat-label">Active Intern</div>
           </div>
         </div>
       </div>
-    </div>
  
-    <!-- 2. SERVICES -->
-    <div class="swiper-slide">
-      <div class="services-slide">
-        <div class="section-eyebrow">What I Do</div>
-        <h2 class="section-title">My <span class="accent">Services</span></h2>
-        <p class="section-sub" style="margin-bottom:32px">I build things. From pixel-perfect UIs to backend logic — and I'm learning to teach machines to think.</p>
-        <div class="services-grid">
-          <div class="svc-card">
-            <div class="svc-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-            <h3>Web Development</h3>
-            <p>Responsive, accessible web applications with modern HTML, CSS, and JavaScript. I focus on clean code, performance, and code that survives production.</p>
-            <span class="svc-badge">PRODUCTION READY</span>
-          </div>
-          <div class="svc-card">
-            <div class="svc-icon"><i class="fa-solid fa-globe"></i></div>
-            <h3>UI / Web Design</h3>
-            <p>User-centered interfaces with deliberate typography, layout, and color. I deliver pixel-perfect front-end implementations that communicate and engage.</p>
-            <span class="svc-badge">FIGMA TO CODE</span>
-          </div>
-          <div class="svc-card">
-            <div class="svc-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Software Development</h3>
-            <p>Cross-platform software and tooling in C# and JavaScript. Modular, maintainable architecture with disciplined version control and real test coverage.</p>
-            <span class="svc-badge">C# · JAVA · JS</span>
-          </div>
-          <div class="svc-card" style="border-color:var(--accent-dim)">
-            <div class="svc-icon" style="color:var(--amber)"><i class="fa-solid fa-brain"></i></div>
-            <h3>Machine Learning</h3>
-            <p>Currently applying ML concepts in a live internship at FlyRank AI. I'm building real models, not just completing courses — Python, data pipelines, and intelligent systems.</p>
-            <span class="svc-badge" style="color:var(--amber);background:rgba(245,158,11,.12)">ACTIVE INTERNSHIP</span>
-          </div>
+      <div class="hero-right">
+        <div class="internship-card">
+          <div class="live-dot">CURRENTLY INTERNING</div>
+          <div class="co-label">Company</div>
+          <div class="co-name">FlyRank AI</div>
+          <div class="co-role">Machine Learning Intern — building intelligent systems</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Quick Profile</div>
+          <div class="info-card-row"><span>University</span><span>UFS — Final Year</span></div>
+          <div class="info-card-row"><span>Degree</span><span>BSc IT (In Progress)</span></div>
+          <div class="info-card-row"><span>Location</span><span>South Africa</span></div>
+          <div class="info-card-row"><span>Availability</span><span class="green-text">Open to Offers</span></div>
+          <div class="info-card-row"><span>Phone</span><span>+27 71 498 1612</span></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Primary Stack</div>
+          <div class="info-card-row"><span>Languages</span><span>C#, Java, Python, JS</span></div>
+          <div class="info-card-row"><span>Frontend</span><span>HTML · CSS · JS</span></div>
+          <div class="info-card-row"><span>Database</span><span>MySQL</span></div>
+          <div class="info-card-row"><span>ML / AI</span><span class="amber-text">In Progress ↗</span></div>
         </div>
       </div>
     </div>
+  </section>
  
-    <!-- 3. CONTACT -->
-    <div class="swiper-slide">
-      <div class="contact-slide">
-        <div class="section-eyebrow">Reach Out</div>
-        <h2 class="section-title">Contact <span class="accent">Me</span></h2>
-        <p class="section-sub" style="margin-bottom:36px">Whether you're looking to hire, collaborate, or just talk tech — I'm always open.</p>
-        <div class="contact-grid">
-          <div>
-            <div class="contact-items">
-              <div class="ci">
-                <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
-                <div>
-                  <div class="ci-label">Mobile</div>
-                  <div class="ci-val">+27 71 498 1612</div>
-                </div>
-              </div>
-              <div class="ci">
-                <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-                <div>
-                  <div class="ci-label">Email</div>
-                  <div class="ci-val">Asandeseaphesihle@gmail.com</div>
-                </div>
-              </div>
-              <div class="ci">
-                <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div>
-                  <div class="ci-label">Location</div>
-                  <div class="ci-val">Mpumalanga, Ermelo — South Africa</div>
-                </div>
-              </div>
-              <div class="ci">
-                <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
-                <div>
-                  <div class="ci-label">GitHub</div>
-                  <div class="ci-val">github.com/asandembokazisolutions</div>
-                </div>
-              </div>
-            </div>
-            <div class="social-row">
-              <a href="https://github.com/asandembokazisolutions" target="_blank" class="soc-btn"><i class="fa-brands fa-github"></i> GitHub</a>
-              <a href="https://wa.me/27714981612" target="_blank" class="soc-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-              <a href="https://www.instagram.com/asande550" target="_blank" class="soc-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-              <a href="https://www.facebook.com/asande.mbokazi.2025" target="_blank" class="soc-btn"><i class="fa-brands fa-facebook"></i> Facebook</a>
-            </div>
-          </div>
-          <div class="dl-card">
-            <h3>Downloads</h3>
-            <a href="assets/cv_pdf_as.pdf" download class="dl-link">
-              <i class="fa-solid fa-file-lines"></i>
-              <div class="dl-info">
-                <div class="dl-name">Curriculum Vitae</div>
-                <div class="dl-meta">PDF · Latest version</div>
-              </div>
-              <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a href="assets/FNB App Academy Certificate – Asande Mbokazi.pdf" download class="dl-link">
-              <i class="fa-solid fa-award"></i>
-              <div class="dl-info">
-                <div class="dl-name">FNB Full Stack Certificate</div>
-                <div class="dl-meta">PDF · 2025</div>
-              </div>
-              <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a href="assets/CertificateOfCompletion_Transition from C to Python_asande.pdf" download class="dl-link">
-              <i class="fa-solid fa-award"></i>
-              <div class="dl-info">
-                <div class="dl-name">Transition from C to Python Certificate</div>
-                <div class="dl-meta">PDF · 2026</div>
-              </div>
-              <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a href="assets/Asande Siphesihle Mbokazi-Anaconda - 2026-06-16.pdf" download class="dl-link">
-              <i class="fa-solid fa-award"></i>
-              <div class="dl-info">
-                <div class="dl-name">Anaconda Certificate</div>
-                <div class="dl-meta">PDF · 2026</div>
-              </div>
-              <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            <a href="mailto:Asandeseaphesihle@gmail.com?subject=Portfolio%20Inquiry" class="btn-primary" style="width:100%;text-align:center;display:block;margin-top:20px;text-decoration:none;padding:13px">Email Me Directly</a>
-          </div>
+  <!-- ABOUT -->
+  <section id="about" class="section about-slide">
+    <div class="section-eyebrow">Who I Am</div>
+    <h2 class="section-title">About <span class="accent">Me</span></h2>
+    <p class="section-sub">
+      A motivated developer with a growth mindset and zero tolerance for mediocrity.
+      I write clean, maintainable code across the full stack and I'm currently expanding into
+      Machine Learning through a live internship — not just studying it, doing it.
+    </p>
+    <div class="about-grid">
+      <div class="about-details">
+        <div class="detail-row"><span class="dk">Name</span><span class="dv">Asande Siphesihle Mbokazi</span></div>
+        <div class="detail-row"><span class="dk">Age</span><span class="dv">21</span></div>
+        <div class="detail-row"><span class="dk">Location</span><span class="dv">South Africa — Ermelo, Mpumalanga</span></div>
+        <div class="detail-row"><span class="dk">University</span><span class="dv">University of the Free State (UFS)</span></div>
+        <div class="detail-row"><span class="dk">Status</span><span class="dv green-text">Final-Year Student</span></div>
+        <div class="detail-row"><span class="dk">Internship</span><span class="dv accent-text">FlyRank AI — ML Intern</span></div>
+        <div class="detail-row"><span class="dk">Email</span><span class="dv">Asandeseaphesihle@gmail.com</span></div>
+        <div class="detail-row"><span class="dk">GitHub</span><span class="dv">asandembokazisolutions</span></div>
+        <div class="detail-row"><span class="dk">Languages</span><span class="dv">English · Zulu</span></div>
+        <div class="detail-row"><span class="dk">Availability</span><span class="dv green-text">24/7</span></div>
+      </div>
+      <div class="skill-section">
+        <div class="skill-item">
+          <div class="skill-top"><span>C#</span><span>80%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>HTML &amp; CSS</span><span>72%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="72"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Java</span><span>75%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>JavaScript</span><span>60%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="60"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>MySQL</span><span>60%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="60"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Python</span><span>45%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-w="45"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Machine Learning</span><span class="amber-text">Learning →</span></div>
+          <div class="bar-track"><div class="bar-fill amber-fill" data-w="30"></div></div>
         </div>
       </div>
     </div>
+  </section>
  
-    <!-- 4. PROJECTS -->
-    <div class="swiper-slide">
-      <div class="projects-slide">
-        <div class="section-eyebrow">Built By Me</div>
-        <h2 class="section-title">My <span class="accent">Projects</span></h2>
-        <p class="section-sub" style="margin-bottom:32px">Real things I've shipped. Each one taught me something.</p>
-        <div class="projects-grid">
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 01</div>
-            <h3>Calculator</h3>
-            <p>A clean calculator app with full arithmetic operations and running history. Built to sharpen UI logic and state handling in pure JavaScript.</p>
-            <a href="https://github.com/asandembokazisolutions/Calculator" target="_blank" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 02</div>
-            <h3>BrainlyBunch Profile</h3>
-            <p>User profile demo for BrainlyBunch — features a polished profile card and real-time activity feed with responsive layout.</p>
-            <a href="https://asandembokazisolutions.github.io/BrainlyBunch-Profile/" target="_blank" class="proj-link">View Live <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 03</div>
-            <h3>BrainlyBunch Web</h3>
-            <p>Full front-end for BrainlyBunch — a responsive landing page with documentation section, designed and built end-to-end.</p>
-            <a href="https://asandembokazisolutions.github.io/BrainlyBunchWeb/" target="_blank" class="proj-link">View Live <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 04</div>
-            <h3>Bursary Hub</h3>
-            <p>A demo platform for students to discover and apply for bursaries. Built with a focus on user experience and accessibility. Used ASP.NET Core and Entity Framework.</p>
-            <a href="https://github.com/asandembokazisolutions/Bursaryhub" target="_blank" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 05</div>
-            <h3>Library Management System</h3>
-            <p>A comprehensive library management solution with features for cataloging, borrowing, and returning books. Built with a focus on usability and efficiency.</p>
-            <a href="https://github.com/asandembokazisolutions/Library" target="_blank" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-          <div class="proj-card">
-            <div class="proj-num">PROJECT / 06</div>
-            <h3>Student Performance Predictor</h3>
-            <p>A web application for tracking and analyzing student performance data. Built with a focus on data visualization and user-friendly interfaces.</p>
-            <a href="https://github.com/asandembokazisolutions/student-performance-predictor" target="_blank" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a>
-          </div>
-
-          <div class="proj-card" style="border-color:var(--accent-dim);border-style:dashed">
-            <div class="proj-num" style="color:var(--amber)">IN PROGRESS</div>
-            <h3 style="color:var(--muted)">FlyRank AI — ML Project</h3>
-            <p style="color:var(--sub)">Currently building in production at FlyRank AI as part of my Machine Learning internship. Details to be announced.</p>
-            <span style="font-size:.8rem;color:var(--amber);font-family:var(--mono)">⟳ Active development</span>
-          </div>
-        </div>
+  <!-- SERVICES -->
+  <section id="services" class="section services-slide">
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-title">My <span class="accent">Services</span></h2>
+    <p class="section-sub">I build things. From pixel-perfect UIs to backend logic — and I'm learning to teach machines to think.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>Web Development</h3>
+        <p>Responsive, accessible web applications with modern HTML, CSS, and JavaScript. I focus on clean code, performance, and code that survives production.</p>
+        <span class="svc-badge">PRODUCTION READY</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>UI / Web Design</h3>
+        <p>User-centered interfaces with deliberate typography, layout, and color. I deliver pixel-perfect front-end implementations that communicate and engage.</p>
+        <span class="svc-badge">FIGMA TO CODE</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Software Development</h3>
+        <p>Cross-platform software and tooling in C# and JavaScript. Modular, maintainable architecture with disciplined version control and real test coverage.</p>
+        <span class="svc-badge">C# · JAVA · JS</span>
+      </div>
+      <div class="svc-card highlight">
+        <div class="svc-icon amber-text"><i class="fa-solid fa-brain"></i></div>
+        <h3>Machine Learning</h3>
+        <p>Currently applying ML concepts in a live internship at FlyRank AI. I'm building real models, not just completing courses — Python, data pipelines, and intelligent systems.</p>
+        <span class="svc-badge amber-badge">ACTIVE INTERNSHIP</span>
       </div>
     </div>
+  </section>
  
-    <!-- 5. CERTIFICATES -->
-    <div class="swiper-slide">
-      <div class="certs-slide">
-        <div class="section-eyebrow">Credentials</div>
-        <h2 class="section-title">My <span class="accent">Certificates</span></h2>
-        <p class="section-sub" style="margin-bottom:32px">Formal proof of the work I put in. Each certificate represents real time, real learning.</p>
-        <div class="certs-grid">
-          <div class="cert-card">
-            <div class="cert-issuer">FNB — First National Bank</div>
-            <h3>Full Stack Development</h3>
-            <div class="cert-date">2025 · Capstone Completed</div>
-            <p style="font-size:.83rem;color:var(--muted);line-height:1.65">
-              Comprehensive program covering front-end, back-end, databases, and deployment. Includes a full capstone application with API integration and responsive UI.
-            </p>
-            <div class="cert-skills">
-              <span class="skill-pill">HTML</span>
-              <span class="skill-pill">CSS</span>
-              <span class="skill-pill">JavaScript</span>
-              <span class="skill-pill">Back-End</span>
-              <span class="skill-pill">APIs</span>
-            </div>
-            <a href="assets/FNB-App.pdf" target="_blank" class="cert-verify">
-              Verify <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i>
-            </a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-issuer">Anaconda — Python First Steps</div>
-            <h3>Python First Steps</h3>
-            <div class="cert-date">Issued: 16 June 2026 · ID: mixukki1rs</div>
-            <p style="font-size:.83rem;color:var(--muted);line-height:1.65">
-              Foundational Python programming certificate from Anaconda — covering syntax, data structures, and scripting basics as part of building toward ML capability.
-            </p>
-            <div class="cert-skills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">Data Structures</span>
-              <span class="skill-pill">Scripting</span>
-            </div>
-            <div class="cert-id">ID: mixukki1rs</div>
-            <a href="assets/Asande Siphesihle Mbokazi-Anaconda - 2026-06-16.pdf" target="_blank" class="cert-verify">
-              Verify <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i>
-            </a>
-          </div>
-          <div class="cert-card">
-            <div class="cert-issuer">LinkedIn Learning</div>
-            <h3>Transition from C# to Python</h3>
-            <div class="cert-date">Completed: 15 June 2026 · 2h 15min</div>
-            <p style="font-size:.83rem;color:var(--muted);line-height:1.65">
-              Advanced course bridging C# and Python — leveraging existing systems knowledge to accelerate Python adoption. Issued by LinkedIn Learning, signed by Head of Learning Content Strategy.
-            </p>
-            <div class="cert-skills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">C#</span>
-              <span class="skill-pill">Cross-Language</span>
-            </div>
-            <div class="cert-id">ID: 92d01fce5b600b65ffea...</div>
-            <a href="assets/Asande Siphesihle Mbokazi-LinkedIn Learning - 2026-06-15.pdf" target="_blank" class="cert-verify">
-              Verify <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i>
-            </a>
-          </div>
-        </div>
+  <!-- PROJECTS -->
+  <section id="projects" class="section projects-slide">
+    <div class="section-eyebrow">Built By Me</div>
+    <h2 class="section-title">My <span class="accent">Projects</span></h2>
+    <p class="section-sub">Real things I've shipped. Each one taught me something.</p>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 01</div>
+        <h3>Calculator</h3>
+        <p>A clean calculator app with full arithmetic operations and running history. Built to sharpen UI logic and state handling in pure JavaScript.</p>
+        <a href="https://github.com/asandembokazisolutions/Calculator" target="_blank" rel="noopener" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 02</div>
+        <h3>BrainlyBunch Profile</h3>
+        <p>User profile demo for BrainlyBunch — features a polished profile card and real-time activity feed with responsive layout.</p>
+        <a href="https://asandembokazisolutions.github.io/BrainlyBunch-Profile/" target="_blank" rel="noopener" class="proj-link">View Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 03</div>
+        <h3>BrainlyBunch Web</h3>
+        <p>Full front-end for BrainlyBunch — a responsive landing page with documentation section, designed and built end-to-end.</p>
+        <a href="https://asandembokazisolutions.github.io/BrainlyBunchWeb/" target="_blank" rel="noopener" class="proj-link">View Live <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 04</div>
+        <h3>Bursary Hub</h3>
+        <p>A demo platform for students to discover and apply for bursaries. Built with a focus on user experience and accessibility. Used ASP.NET Core and Entity Framework.</p>
+        <a href="https://github.com/asandembokazisolutions/Bursaryhub" target="_blank" rel="noopener" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 05</div>
+        <h3>Library Management System</h3>
+        <p>A comprehensive library management solution with features for cataloging, borrowing, and returning books. Built with a focus on usability and efficiency.</p>
+        <a href="https://github.com/asandembokazisolutions/Library" target="_blank" rel="noopener" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">PROJECT / 06</div>
+        <h3>Student Performance Predictor</h3>
+        <p>A web application for tracking and analyzing student performance data. Built with a focus on data visualization and user-friendly interfaces.</p>
+        <a href="https://github.com/asandembokazisolutions/student-performance-predictor" target="_blank" rel="noopener" class="proj-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="proj-card dashed">
+        <div class="proj-num amber-text">IN PROGRESS</div>
+        <h3 class="muted-text">FlyRank AI — ML Project</h3>
+        <p class="sub-text">Currently building in production at FlyRank AI as part of my Machine Learning internship. Details to be announced.</p>
+        <span class="active-dev">⟳ Active development</span>
       </div>
     </div>
+  </section>
  
-  </div><!-- /swiper-wrapper -->
-</div><!-- /swiper -->
+  <!-- CERTIFICATES -->
+  <section id="certs" class="section certs-slide">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">My <span class="accent">Certificates</span></h2>
+    <p class="section-sub">Formal proof of the work I put in. Each certificate represents real time, real learning.</p>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-issuer">FNB — First National Bank</div>
+        <h3>Full Stack Development</h3>
+        <div class="cert-date">2025 · Capstone Completed</div>
+        <p class="cert-desc">
+          Comprehensive program covering front-end, back-end, databases, and deployment. Includes a full capstone application with API integration and responsive UI.
+        </p>
+        <div class="cert-skills">
+          <span class="skill-pill">HTML</span>
+          <span class="skill-pill">CSS</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Back-End</span>
+          <span class="skill-pill">APIs</span>
+        </div>
+        <a href="assets/FNB-App.pdf" target="_blank" rel="noopener" class="cert-verify">
+          Verify <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">Anaconda — Python First Steps</div>
+        <h3>Python First Steps</h3>
+        <div class="cert-date">Issued: 16 June 2026</div>
+        <p class="cert-desc">
+          Foundational Python programming certificate from Anaconda — covering syntax, data structures, and scripting basics as part of building toward ML capability.
+        </p>
+        <div class="cert-skills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Data Structures</span>
+          <span class="skill-pill">Scripting</span>
+        </div>
+        <div class="cert-id">ID: mixukki1rs</div>
+        <a href="assets/Asande_Siphesihle_Mbokazi-Anaconda_-_2026-06-16.pdf" target="_blank" rel="noopener" class="cert-verify">
+          Verify <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+      <div class="cert-card">
+        <div class="cert-issuer">LinkedIn Learning</div>
+        <h3>Transition from C# to Python</h3>
+        <div class="cert-date">Completed: 15 June 2026 · 2h 15min</div>
+        <p class="cert-desc">
+          Advanced course bridging C# and Python — leveraging existing systems knowledge to accelerate Python adoption. Issued by LinkedIn Learning, signed by Head of Learning Content Strategy.
+        </p>
+        <div class="cert-skills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C#</span>
+          <span class="skill-pill">Cross-Language</span>
+        </div>
+        <div class="cert-id">ID: 92d01fce5b600b65ffea…</div>
+        <a href="assets/CertificateOfCompletion_Transition_from_C_to_Python_asande.pdf" target="_blank" rel="noopener" class="cert-verify">
+          Verify <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-slide">
+    <div class="section-eyebrow">Reach Out</div>
+    <h2 class="section-title">Contact <span class="accent">Me</span></h2>
+    <p class="section-sub">Whether you're looking to hire, collaborate, or just talk tech — I'm always open.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-items">
+          <div class="ci">
+            <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="ci-label">Mobile</div>
+              <div class="ci-val">+27 71 498 1612</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-val">Asandeseaphesihle@gmail.com</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-val">Mpumalanga, Ermelo — South Africa</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
+            <div>
+              <div class="ci-label">GitHub</div>
+              <div class="ci-val">github.com/asandembokazisolutions</div>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="https://github.com/asandembokazisolutions" target="_blank" rel="noopener" class="soc-btn"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://wa.me/27714981612" target="_blank" rel="noopener" class="soc-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          <a href="https://www.instagram.com/asande550" target="_blank" rel="noopener" class="soc-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/asande.mbokazi.2025" target="_blank" rel="noopener" class="soc-btn"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <h3>Downloads</h3>
+        <a href="assets/cv_pdf_as.pdf" download class="dl-link">
+          <i class="fa-solid fa-file-lines"></i>
+          <div class="dl-info">
+            <div class="dl-name">Curriculum Vitae</div>
+            <div class="dl-meta">PDF · Latest version</div>
+          </div>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="assets/FNB-App.pdf" download class="dl-link">
+          <i class="fa-solid fa-award"></i>
+          <div class="dl-info">
+            <div class="dl-name">FNB Full Stack Certificate</div>
+            <div class="dl-meta">PDF · 2025</div>
+          </div>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="assets/CertificateOfCompletion_Transition_from_C_to_Python_asande.pdf" download class="dl-link">
+          <i class="fa-solid fa-award"></i>
+          <div class="dl-info">
+            <div class="dl-name">Transition from C to Python Certificate</div>
+            <div class="dl-meta">PDF · 2026</div>
+          </div>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="assets/Asande_Siphesihle_Mbokazi-Anaconda_-_2026-06-16.pdf" download class="dl-link">
+          <i class="fa-solid fa-award"></i>
+          <div class="dl-info">
+            <div class="dl-name">Anaconda Certificate</div>
+            <div class="dl-meta">PDF · 2026</div>
+          </div>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="mailto:Asandeseaphesihle@gmail.com?subject=Portfolio%20Inquiry" class="btn-primary full-width">Email Me Directly</a>
+      </div>
+    </div>
+  </section>
+ 
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">AM<span class="accent">.</span></span>
+      <span class="footer-copy">© 2026 Asande Mbokazi. Built with purpose.</span>
+    </div>
+  </footer>
+ 
+</main>
  
 <script>
-var swiper;
-document.addEventListener('DOMContentLoaded',function(){
-  swiper = new Swiper('.mySwiper',{
-    direction:'horizontal',
-    mousewheel:true,
-    allowTouchMove:true,
-    speed:600,
-    on:{
-      slideChange:function(){
-        document.querySelectorAll('.nav-item').forEach(function(el,i){
-          el.classList.toggle('active', i === swiper.activeIndex);
-        });
-      }
+// ── SCROLL SPY: highlight active nav link (top + bottom nav) based on section in view ──
+const sections = document.querySelectorAll('.section');
+const topLinks = document.querySelectorAll('.nav-link');
+const bottomLinks = document.querySelectorAll('.bn-link');
+ 
+function setActive(id) {
+  topLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+  bottomLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+}
+ 
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setActive(entry.target.id);
     }
   });
-});
-function goTo(i){
-  if(swiper) swiper.slideTo(i,600);
-  document.querySelectorAll('.nav-item').forEach(function(el,j){
-    el.classList.toggle('active', j === i);
+}, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+ 
+sections.forEach(sec => spyObserver.observe(sec));
+ 
+// ── SKILL BAR ANIMATION on scroll into view ──
+const bars = document.querySelectorAll('.bar-fill');
+const barObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const w = bar.dataset.w;
+      bar.style.setProperty('--target', w + '%');
+      bar.classList.add('filled');
+      obs.unobserve(bar);
+    }
   });
-}
+}, { threshold: 0.3 });
+ 
+bars.forEach(bar => barObserver.observe(bar));
+ 
+// ── GENERAL SCROLL REVEAL for cards ──
+const revealTargets = document.querySelectorAll('.svc-card, .proj-card, .cert-card, .info-card, .internship-card');
+revealTargets.forEach(el => el.classList.add('reveal'));
+ 
+const revealObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+ 
+revealTargets.forEach(el => revealObserver.observe(el));
+ 
 </script>
 </body>
 </html>
- 
