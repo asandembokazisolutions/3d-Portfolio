@@ -177,19 +177,39 @@ function drawMiniGraph(canvas){
 }
 
 /* ============================================================
-   CONTACT FORM (no backend — visual confirmation only)
+   CONTACT FORM — hands off to the visitor's own email client
    ============================================================ */
+const CONTACT_EMAIL = 'Asandeseaphesihle@gmail.com';
+
 function handleContactSubmit(e){
   e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const email = form.querySelector('input[type="email"]').value.trim();
+  const message = form.querySelector('textarea').value.trim();
+
+  const subject = `Portfolio Contact — ${name}`;
+  const body =
+`Name: ${name}
+Email: ${email}
+
+${message}`;
+
+  const mailtoUrl =
+    `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  const btn = form.querySelector('.form-submit');
   const original = btn.textContent;
-  btn.textContent = 'Message queued ✓';
+  btn.textContent = 'Opening email client…';
   btn.style.opacity = '.7';
+
+  window.location.href = mailtoUrl;
+
   setTimeout(()=>{
     btn.textContent = original;
     btn.style.opacity = '1';
-    e.target.reset();
   }, 2200);
+
   return false;
 }
 
