@@ -643,108 +643,19 @@ main{padding-top:var(--nav-h)}
       <div class="s-index"><span class="s-line"></span>03 / SYSTEMS</div>
       <h2 class="s-title">Production Systems</h2>
       <p class="s-desc">Each entry expands into its architecture, stack, and the decisions behind it. Click a row to open.</p>
+      <p class="s-desc">Selected, deployed systems below — additional repositories on <a href="https://github.com/asandembokazisolutions" target="_blank" rel="noopener" class="pd-link">GitHub</a>.</p>
     </div>
     <div class="proj-list reveal" id="projList">
       <!-- populated with static rows below -->
 
-      <div class="proj-row" data-graph="calc">
-        <div class="proj-summary">
-          <span class="proj-id mono">SYS-01</span>
-          <div>
-            <div class="proj-name">Calculator Engine</div>
-            <div class="proj-tagline">State-driven arithmetic UI with operation history</div>
-          </div>
-          <span class="proj-status">SHIPPED</span>
-          <span class="proj-expand-icon">＋</span>
-        </div>
-        <div class="proj-detail">
-          <div class="proj-detail-inner">
-            <div>
-              <div class="pd-block-label">Overview</div>
-              <p class="pd-desc">A calculator built to isolate one problem: state handling in vanilla JavaScript without a framework. Operation history is modelled as an append-only log rather than mutated state, so past calculations remain inspectable.</p>
-              <div class="pd-block-label">Stack</div>
-              <div class="pd-stack">
-                <span class="pd-chip">JavaScript</span><span class="pd-chip">HTML5</span><span class="pd-chip">CSS Grid</span>
-              </div>
-              <a href="https://github.com/asandembokazisolutions/Calculator" target="_blank" rel="noopener" class="pd-link">View source →</a>
-            </div>
-            <div>
-              <div class="pd-block-label">Component Flow</div>
-              <div class="pd-canvas-wrap"><span class="pd-canvas-label">input → parse → evaluate → log</span><canvas class="miniGraph" data-type="linear"></canvas></div>
-              <p class="pd-note">Design decision: history is a log, not mutable state — every prior result stays traceable.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-row" data-graph="brainlyprofile">
-        <div class="proj-summary">
-          <span class="proj-id mono">SYS-02</span>
-          <div>
-            <div class="proj-name">BrainlyBunch — Profile Module</div>
-            <div class="proj-tagline">Responsive profile card with live activity feed</div>
-          </div>
-          <span class="proj-status">LIVE</span>
-          <span class="proj-expand-icon">＋</span>
-        </div>
-        <div class="proj-detail">
-          <div class="proj-detail-inner">
-            <div>
-              <div class="pd-block-label">Overview</div>
-              <p class="pd-desc">A user-profile module for the BrainlyBunch platform. Focus was on layout resilience — the activity feed and profile card independently reflow at every breakpoint without shared fragile grid dependencies.</p>
-              <div class="pd-block-label">Stack</div>
-              <div class="pd-stack">
-                <span class="pd-chip">HTML5</span><span class="pd-chip">CSS Flexbox</span><span class="pd-chip">JavaScript</span>
-              </div>
-              <a href="https://asandembokazisolutions.github.io/BrainlyBunch-Profile/" target="_blank" rel="noopener" class="pd-link">View live →</a>
-            </div>
-            <div>
-              <div class="pd-block-label">Component Flow</div>
-              <div class="pd-canvas-wrap"><span class="pd-canvas-label">profile ↔ feed ↔ layout engine</span><canvas class="miniGraph" data-type="mesh"></canvas></div>
-              <p class="pd-note">Design decision: independent reflow per component avoids layout coupling under viewport changes.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-row" data-graph="brainlyweb">
-        <div class="proj-summary">
-          <span class="proj-id mono">SYS-03</span>
-          <div>
-            <div class="proj-name">BrainlyBunch — Web Front-End</div>
-            <div class="proj-tagline">Full landing page and documentation surface</div>
-          </div>
-          <span class="proj-status">LIVE</span>
-          <span class="proj-expand-icon">＋</span>
-        </div>
-        <div class="proj-detail">
-          <div class="proj-detail-inner">
-            <div>
-              <div class="pd-block-label">Overview</div>
-              <p class="pd-desc">End-to-end front-end for BrainlyBunch: marketing landing page plus a structured documentation section, built and shipped independently from design through deployment.</p>
-              <div class="pd-block-label">Stack</div>
-              <div class="pd-stack">
-                <span class="pd-chip">HTML5</span><span class="pd-chip">CSS3</span><span class="pd-chip">JavaScript</span><span class="pd-chip">GitHub Pages</span>
-              </div>
-              <a href="https://asandembokazisolutions.github.io/BrainlyBunchWeb/" target="_blank" rel="noopener" class="pd-link">View live →</a>
-            </div>
-            <div>
-              <div class="pd-block-label">Component Flow</div>
-              <div class="pd-canvas-wrap"><span class="pd-canvas-label">landing → docs → nav routing</span><canvas class="miniGraph" data-type="linear"></canvas></div>
-              <p class="pd-note">Design decision: documentation section treated as a first-class route, not an afterthought page.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="proj-row" data-graph="bursary">
         <div class="proj-summary">
-          <span class="proj-id mono">SYS-04</span>
+          <span class="proj-id mono">SYS-01</span>
           <div>
             <div class="proj-name">Bursary Hub</div>
             <div class="proj-tagline">Student bursary discovery &amp; application platform</div>
           </div>
-          <span class="proj-status">SHIPPED</span>
+          <span class="proj-status">LIVE</span>
           <span class="proj-expand-icon">＋</span>
         </div>
         <div class="proj-detail">
@@ -756,6 +667,7 @@ main{padding-top:var(--nav-h)}
               <div class="pd-stack">
                 <span class="pd-chip">C#</span><span class="pd-chip">ASP.NET Core</span><span class="pd-chip">Entity Framework</span><span class="pd-chip">SQL Server</span>
               </div>
+              <a href="https://bursaryhub-1.onrender.com" target="_blank" rel="noopener" class="pd-link">View live →</a>
               <a href="https://github.com/asandembokazisolutions/Bursaryhub" target="_blank" rel="noopener" class="pd-link">View source →</a>
             </div>
             <div>
@@ -767,61 +679,32 @@ main{padding-top:var(--nav-h)}
         </div>
       </div>
 
-      <div class="proj-row" data-graph="library">
-        <div class="proj-summary">
-          <span class="proj-id mono">SYS-05</span>
-          <div>
-            <div class="proj-name">Library Management System</div>
-            <div class="proj-tagline">Cataloguing, borrowing, and returns tracking</div>
-          </div>
-          <span class="proj-status">SHIPPED</span>
-          <span class="proj-expand-icon">＋</span>
-        </div>
-        <div class="proj-detail">
-          <div class="proj-detail-inner">
-            <div>
-              <div class="pd-block-label">Overview</div>
-              <p class="pd-desc">A full library management solution covering cataloguing, borrowing, and returns. The data model treats a "loan" as its own entity with state transitions, rather than a boolean flag on the book record.</p>
-              <div class="pd-block-label">Stack</div>
-              <div class="pd-stack">
-                <span class="pd-chip">C#</span><span class="pd-chip">MySQL</span><span class="pd-chip">Windows Forms</span>
-              </div>
-              <a href="https://github.com/asandembokazisolutions/Library" target="_blank" rel="noopener" class="pd-link">View source →</a>
-            </div>
-            <div>
-              <div class="pd-block-label">Component Flow</div>
-              <div class="pd-canvas-wrap"><span class="pd-canvas-label">catalog ↔ loan state ↔ member</span><canvas class="miniGraph" data-type="mesh"></canvas></div>
-              <p class="pd-note">Design decision: loans as first-class entities keep the audit trail intact for overdue handling.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="proj-row" data-graph="predictor">
         <div class="proj-summary">
-          <span class="proj-id mono">SYS-06</span>
+          <span class="proj-id mono">SYS-02</span>
           <div>
             <div class="proj-name">Student Performance Predictor</div>
-            <div class="proj-tagline">Tracking &amp; visualising academic performance data</div>
+            <div class="proj-tagline">Regression model predicting math scores from academic &amp; demographic factors</div>
           </div>
-          <span class="proj-status">SHIPPED</span>
+          <span class="proj-status">LIVE</span>
           <span class="proj-expand-icon">＋</span>
         </div>
         <div class="proj-detail">
           <div class="proj-detail-inner">
             <div>
               <div class="pd-block-label">Overview</div>
-              <p class="pd-desc">A web application for tracking and analysing student performance data over time, with an emphasis on making trends legible through visualisation rather than raw tables.</p>
+              <p class="pd-desc">A linear regression pipeline predicting a student's math score from reading/writing scores and demographic factors. Preprocessing (one-hot encoding of categorical fields) is bundled into the same scikit-learn Pipeline as the model, so inference always mirrors training — no separate preprocessing step to fall out of sync.</p>
               <div class="pd-block-label">Stack</div>
               <div class="pd-stack">
-                <span class="pd-chip">JavaScript</span><span class="pd-chip">Chart.js</span><span class="pd-chip">HTML5</span>
+                <span class="pd-chip">Python</span><span class="pd-chip">scikit-learn</span><span class="pd-chip">pandas</span><span class="pd-chip">Streamlit</span>
               </div>
+              <a href="https://student-performance-predictor-dmberj57psjk9ecuw4adj4.streamlit.app/" target="_blank" rel="noopener" class="pd-link">View live →</a>
               <a href="https://github.com/asandembokazisolutions/student-performance-predictor" target="_blank" rel="noopener" class="pd-link">View source →</a>
             </div>
             <div>
               <div class="pd-block-label">Component Flow</div>
-              <div class="pd-canvas-wrap"><span class="pd-canvas-label">data → aggregation → chart render</span><canvas class="miniGraph" data-type="linear"></canvas></div>
-              <p class="pd-note">Design decision: aggregation runs client-side once, then charts re-render from cached results — not recomputed per interaction.</p>
+              <div class="pd-canvas-wrap"><span class="pd-canvas-label">input → pipeline (encode + regress) → prediction</span><canvas class="miniGraph" data-type="linear"></canvas></div>
+              <p class="pd-note">Design decision: model trains once per session (cached), not on every prediction — keeps the app responsive on free hosting.</p>
             </div>
           </div>
         </div>
@@ -829,7 +712,7 @@ main{padding-top:var(--nav-h)}
 
       <div class="proj-row" data-graph="flyrank">
         <div class="proj-summary">
-          <span class="proj-id mono">SYS-07</span>
+          <span class="proj-id mono">SYS-03</span>
           <div>
             <div class="proj-name">FlyRank AI — ML System</div>
             <div class="proj-tagline">Production ML work, internal — details restricted</div>
